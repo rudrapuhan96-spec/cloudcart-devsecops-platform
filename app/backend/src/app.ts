@@ -1,0 +1,17 @@
+import express from 'express'
+import cors from 'cors'
+
+import healthRoutes from './routes/health.routes'
+import productsRoutes from './routes/products.routes'
+import ordersRoutes from './routes/orders.routes'
+
+const app = express()
+
+app.use(cors())
+app.use(express.json())
+
+app.use('/api', healthRoutes)
+app.use('/api', productsRoutes)
+app.use('/api', ordersRoutes)
+
+export default app
