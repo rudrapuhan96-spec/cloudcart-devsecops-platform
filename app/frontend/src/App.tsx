@@ -1,4 +1,4 @@
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom'
+﻿import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom'
 import { CartProvider } from './context/CartContext'
 import { OrderProvider } from './context/OrderContext'
 
@@ -13,6 +13,8 @@ import Docs from './pages/Docs'
 import Store from './pages/Store'
 import Cart from './pages/Cart'
 import Orders from './pages/Orders'
+import Checkout from './pages/Checkout'
+import AdminOrders from './pages/AdminOrders'
 
 const navItems = [
   { label: 'Overview', path: '/overview' },
@@ -157,13 +159,15 @@ function App() {
                   path="*"
                   element={<Overview />}
                 />
+                <Route path="/checkout" element={<Checkout />} />
+                <Route path="/admin/orders" element={<AdminOrders />} />
               </Routes>
             </main>
 
             <footer className="footer">
               <div className="container footer-inner">
                 <p>
-                  CloudCart — Secure Cloud-Native DevSecOps Platform
+                  CloudCart â€” Secure Cloud-Native DevSecOps Platform
                 </p>
 
                 <div className="footer-links">
@@ -205,3 +209,4 @@ function App() {
 }
 
 export default App
+

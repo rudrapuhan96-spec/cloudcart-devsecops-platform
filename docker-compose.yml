@@ -1,4 +1,4 @@
-services:
+﻿services:
 
   mysql:
     image: mysql:8.4
@@ -38,6 +38,9 @@ services:
       context: ./app/backend
       dockerfile: Dockerfile
 
+    env_file:
+      - ./app/backend/.env
+
     restart: unless-stopped
 
     environment:
@@ -61,6 +64,7 @@ services:
       context: ./app/frontend
       dockerfile: Dockerfile
 
+
     restart: unless-stopped
 
     ports:
@@ -71,3 +75,4 @@ services:
 
 volumes:
   cloudcart_mysql_data:
+

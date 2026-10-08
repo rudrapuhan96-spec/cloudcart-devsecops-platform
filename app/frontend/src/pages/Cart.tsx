@@ -1,10 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
 
 import { useCart } from '../context/CartContext'
-
-const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || 'http://localhost:4000/api'
 
 function Cart() {
   const navigate = useNavigate()
@@ -17,10 +13,6 @@ function Cart() {
     removeFromCart,
     clearCart,
   } = useCart()
-
-  const [isCreatingOrder, setIsCreatingOrder] = useState(false)
-  const [checkoutError, setCheckoutError] = useState('')
-
   const deliveryFee =
     subtotal === 0
       ? 0
@@ -30,52 +22,9 @@ function Cart() {
 
   const total = subtotal + deliveryFee
 
-  const handleCheckout = async () => {
-    if (items.length === 0 || isCreatingOrder) {
-      return
-    }
-
-    setIsCreatingOrder(true)
-    setCheckoutError('')
-
-    try {
-      const response = await fetch(`${API_BASE_URL}/orders`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          items: items.map((item) => ({
-            id: item.id,
-            quantity: item.quantity,
-          })),
-        }),
-      })
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        throw new Error(
-          data.error || 'Unable to create order',
-        )
-      }
-
-      clearCart()
-
-      navigate(
-        `/orders?order=${encodeURIComponent(data.order.id)}`,
-      )
-    } catch (error) {
-      console.error('Order creation failed:', error)
-
-      setCheckoutError(
-        error instanceof Error
-          ? error.message
-          : 'Unable to create order',
-      )
-    } finally {
-      setIsCreatingOrder(false)
-    }
+  const handleCheckout = () => {
+    if (items.length === 0) return
+    navigate('/checkout')
   }
 
   return (
@@ -156,7 +105,6 @@ function Cart() {
                     type="button"
                     className="cart-clear-button"
                     onClick={clearCart}
-                    disabled={isCreatingOrder}
                   >
                     Clear cart
                   </button>
@@ -180,7 +128,7 @@ function Cart() {
                         <h2>{item.name}</h2>
 
                         <div className="cart-item-price">
-                          ₹{item.price.toLocaleString('en-IN')}
+                          â‚¹{item.price.toLocaleString('en-IN')}
                         </div>
                       </div>
 
@@ -194,9 +142,8 @@ function Cart() {
                               item.quantity - 1,
                             )
                           }
-                          disabled={isCreatingOrder}
                         >
-                          −
+                          âˆ’
                         </button>
 
                         <span>{item.quantity}</span>
@@ -210,7 +157,6 @@ function Cart() {
                               item.quantity + 1,
                             )
                           }
-                          disabled={isCreatingOrder}
                         >
                           +
                         </button>
@@ -218,7 +164,7 @@ function Cart() {
 
                       <div className="cart-item-total">
                         <strong>
-                          ₹
+                          â‚¹
                           {(
                             item.price * item.quantity
                           ).toLocaleString('en-IN')}
@@ -230,7 +176,6 @@ function Cart() {
                           onClick={() =>
                             removeFromCart(item.id)
                           }
-                          disabled={isCreatingOrder}
                         >
                           Remove
                         </button>
@@ -257,7 +202,7 @@ function Cart() {
                   <span>Subtotal</span>
 
                   <strong>
-                    ₹{subtotal.toLocaleString('en-IN')}
+                    â‚¹{subtotal.toLocaleString('en-IN')}
                   </strong>
                 </div>
 
@@ -267,7 +212,7 @@ function Cart() {
                   <strong>
                     {deliveryFee === 0
                       ? 'FREE'
-                      : `₹${deliveryFee}`}
+                      : `â‚¹${deliveryFee}`}
                   </strong>
                 </div>
 
@@ -277,34 +222,22 @@ function Cart() {
                   <span>Total</span>
 
                   <strong>
-                    ₹{total.toLocaleString('en-IN')}
+                    â‚¹{total.toLocaleString('en-IN')}
                   </strong>
                 </div>
-
-                {checkoutError && (
-                  <div className="cart-security-note">
-                    <span>ORDER ERROR</span>
-
-                    <p>{checkoutError}</p>
-                  </div>
-                )}
-
-                <button
+<button
                   type="button"
                   className="cart-checkout-button"
                   onClick={handleCheckout}
-                  disabled={isCreatingOrder}
                 >
-                  {isCreatingOrder
-                    ? 'Creating Order...'
-                    : 'Create Order'}
+                  Create Order
                 </button>
 
                 <NavLink
                   to="/store"
                   className="cart-continue-link"
                 >
-                  ← Continue shopping
+                  â† Continue shopping
                 </NavLink>
 
                 <div className="cart-security-note">
@@ -351,7 +284,7 @@ function Cart() {
                 <small>Load products</small>
               </div>
 
-              <div>→</div>
+              <div>â†’</div>
 
               <div>
                 <span>02</span>
@@ -359,7 +292,7 @@ function Cart() {
                 <small>Review items</small>
               </div>
 
-              <div>→</div>
+              <div>â†’</div>
 
               <div>
                 <span>03</span>
@@ -367,7 +300,7 @@ function Cart() {
                 <small>Validate + calculate</small>
               </div>
 
-              <div>→</div>
+              <div>â†’</div>
 
               <div>
                 <span>04</span>
@@ -404,3 +337,6 @@ function Cart() {
 }
 
 export default Cart
+
+
+
