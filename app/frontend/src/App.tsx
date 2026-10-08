@@ -11,6 +11,7 @@ import Evidence from './pages/Evidence'
 import Docs from './pages/Docs'
 
 import Store from './pages/Store'
+import Showcase from './pages/Showcase'
 import Cart from './pages/Cart'
 import Orders from './pages/Orders'
 import Checkout from './pages/Checkout'
