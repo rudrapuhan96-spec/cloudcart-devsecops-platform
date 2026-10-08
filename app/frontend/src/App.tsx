@@ -1,4 +1,4 @@
-﻿import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom'
 import { CartProvider } from './context/CartContext'
 import { OrderProvider } from './context/OrderContext'
 
@@ -11,7 +11,6 @@ import Evidence from './pages/Evidence'
 import Docs from './pages/Docs'
 
 import Store from './pages/Store'
-import Showcase from './pages/Showcase'
 import Cart from './pages/Cart'
 import Orders from './pages/Orders'
 import Checkout from './pages/Checkout'
@@ -168,7 +167,7 @@ function App() {
             <footer className="footer">
               <div className="container footer-inner">
                 <p>
-                  CloudCart â€” Secure Cloud-Native DevSecOps Platform
+                  CloudCart — Secure Cloud-Native DevSecOps Platform
                 </p>
 
                 <div className="footer-links">

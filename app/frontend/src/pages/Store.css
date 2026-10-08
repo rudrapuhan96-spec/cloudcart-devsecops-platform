@@ -622,3 +622,56 @@
     padding: 22px;
   }
 }
+/* CLOUDCART PRODUCT IMAGE OVERRIDE */
+
+.store-product-visual,
+.store-product-image {
+  background-color: #0a1018 !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.store-product-visual::before,
+.store-product-visual::after,
+.store-product-image::before,
+.store-product-image::after {
+  display: none !important;
+}
+
+.store-product-visual > .store-product-mark,
+.store-product-image > .store-product-mark,
+.store-product-visual > span:not(.store-product-badge),
+.store-product-image > span:not(.store-product-badge) {
+  display: none !important;
+}
+
+.store-product:nth-child(1) .store-product-visual,
+.store-product:nth-child(1) .store-product-image {
+  background-image: url("../assets/products/cloud-hoodie.webp") !important;
+}
+
+.store-product:nth-child(2) .store-product-visual,
+.store-product:nth-child(2) .store-product-image {
+  background-image: url("../assets/products/devops-backpack.webp") !important;
+}
+
+.store-product:nth-child(3) .store-product-visual,
+.store-product:nth-child(3) .store-product-image {
+  background-image: url("../assets/products/terminal-mug.webp") !important;
+}
+
+.store-product:nth-child(4) .store-product-visual,
+.store-product:nth-child(4) .store-product-image {
+  background-image: url("../assets/products/kubernetes-tee.webp") !important;
+}
+
+.store-product:nth-child(5) .store-product-visual,
+.store-product:nth-child(5) .store-product-image {
+  background-image: url("../assets/products/sticker-pack.webp") !important;
+}
+
+.store-product:nth-child(6) .store-product-visual,
+.store-product:nth-child(6) .store-product-image {
+  background-image: url("../assets/products/desk-kit.webp") !important;
+}
