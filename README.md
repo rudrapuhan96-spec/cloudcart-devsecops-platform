@@ -192,7 +192,7 @@ This repository is intended as a practical DevSecOps portfolio project. Deployme
 
 ## Author
 
-**Krishna Sagar Puhan**
+**Rudra Shankar Puhan**
 
 Cloud, DevOps, infrastructure automation and secure application deployment.
 
@@ -201,3 +201,4 @@ Cloud, DevOps, infrastructure automation and secure application deployment.
 <p align="center">
   Built as a hands-on cloud and DevSecOps learning project.
 </p>
+
