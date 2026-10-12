@@ -15,3 +15,13 @@ override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
+
+# Terraform plans, state and local backups
+*.tfplan
+*.tfstate
+*.tfstate.*
+*.bak
+*.backup
+
+# Temporary backup files
+*.bak-*

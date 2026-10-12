@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+﻿import { useEffect, useMemo, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 import './Store.css'
@@ -18,7 +18,7 @@ type ProductsResponse = {
 }
 
 const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || 'http://localhost:4000/api'
+  import.meta.env.VITE_API_BASE_URL || '/api'
 
 function Store() {
   const { addToCart, totalItems } = useCart()
@@ -101,7 +101,7 @@ function Store() {
 
               <p className="store-description">
                 A small product storefront running through the
-                CloudCart application stack — React frontend,
+                CloudCart application stack â€” React frontend,
                 API backend, database persistence, and Docker.
               </p>
             </div>
@@ -211,7 +211,7 @@ function Store() {
 
                     <div className="store-product-footer">
                       <strong>
-                        ₹{product.price.toLocaleString('en-IN')}
+                        â‚¹{product.price.toLocaleString('en-IN')}
                       </strong>
 
                       <button
@@ -257,7 +257,7 @@ function Store() {
                 <small>Browse products</small>
               </div>
 
-              <div className="store-flow-arrow">→</div>
+              <div className="store-flow-arrow">â†’</div>
 
               <div>
                 <span>02</span>
@@ -265,7 +265,7 @@ function Store() {
                 <small>Review items</small>
               </div>
 
-              <div className="store-flow-arrow">→</div>
+              <div className="store-flow-arrow">â†’</div>
 
               <div>
                 <span>03</span>
@@ -273,7 +273,7 @@ function Store() {
                 <small>Create order</small>
               </div>
 
-              <div className="store-flow-arrow">→</div>
+              <div className="store-flow-arrow">â†’</div>
 
               <div>
                 <span>04</span>
@@ -292,14 +292,14 @@ function Store() {
               to="/overview"
               className="store-secondary-link"
             >
-              ← Overview
+              â† Overview
             </NavLink>
 
             <NavLink
               to="/orders"
               className="store-primary-link"
             >
-              Order Center →
+              Order Center â†’
             </NavLink>
           </div>
         </div>

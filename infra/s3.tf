@@ -2,8 +2,7 @@ data "aws_caller_identity" "current" {}
 
 resource "aws_s3_bucket" "cloudcart_assets" {
   bucket        = "cloudcart-assets-${data.aws_caller_identity.current.account_id}"
-  force_destroy = true
-
+  force_destroy = false
   tags = {
     Name        = "CloudCart Assets"
     Project     = "CloudCart"
@@ -45,3 +44,4 @@ resource "aws_s3_bucket_ownership_controls" "cloudcart_assets" {
     object_ownership = "BucketOwnerEnforced"
   }
 }
+
