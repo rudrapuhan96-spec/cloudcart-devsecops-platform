@@ -1,130 +1,227 @@
-﻿<p align="center">
+﻿# CloudCart — DevSecOps E-Commerce Platform
+
+<p align="center">
   <img src="assets/cloudcart-devsecops-banner.png" alt="CloudCart DevSecOps Platform" width="100%">
 </p>
 
-<h1 align="center">CloudCart DevSecOps Platform</h1>
-
 <p align="center">
-  A cloud-native e-commerce application and DevSecOps portfolio project built with AWS, Docker, Kubernetes and Terraform.
+  A full-stack e-commerce application showcasing AWS networking, Infrastructure as Code, containerization, Kubernetes, CI/CD, and security-focused cloud engineering.
 </p>
 
 <p align="center">
-  <b>Cloud Infrastructure | Containerization | Infrastructure as Code | Deployment | Security</b>
+  <a href="https://github.com/rudrapuhan96-spec/cloudcart-devsecops-platform">GitHub Repository</a> ·
+  <b>AWS</b> · <b>Terraform</b> · <b>Docker</b> · <b>Kubernetes</b> · <b>DevSecOps</b>
 </p>
 
 ---
 
-## Overview
+## Project Overview
 
-CloudCart is an e-commerce application designed to demonstrate application deployment and cloud infrastructure practices. The project combines a React frontend, a Node.js backend, container images, Kubernetes resources and AWS infrastructure configuration.
+CloudCart is a cloud-native e-commerce and DevSecOps portfolio project that brings application development and cloud infrastructure together. It combines a customer-facing shopping experience, backend APIs, order management, AWS networking, infrastructure automation, containerization, and Kubernetes deployment configuration.
 
-The repository includes application source code, deployment scripts, infrastructure configuration and Kubernetes manifests/templates.
+The repository includes application source code, Terraform infrastructure, deployment resources, GitHub Actions workflow evidence, AWS screenshots, and demonstration videos.
 
-## Key Features
+## Project Highlights
 
-- E-commerce storefront, cart and checkout pages
-- Order tracking and administration interface
-- React/Vite frontend and Node.js backend
-- Docker-based container packaging
-- Amazon ECR image repository configuration
-- Amazon EKS and Kubernetes deployment configuration
-- Terraform infrastructure as code
-- AWS networking and S3 infrastructure configuration
-- NGINX frontend configuration and API proxying
-- Deployment scripts and project documentation
-
-> Note: Actual service availability, CI/CD automation, security scans, monitoring and production readiness depend on the deployed configuration. Verify each capability before presenting it as operational.
+- **Full-stack e-commerce:** Product browsing, shopping cart, checkout, and order creation.
+- **Admin Orders Portal:** Administrative order review and customer/order information.
+- **Order confirmation:** Email confirmation workflow, with successful delivery reported during testing.
+- **AWS networking:** VPC, public and private subnets, route tables, NAT Gateways, Elastic IPs, Security Groups, and Network ACLs.
+- **Infrastructure as Code:** Terraform configuration for cloud resource provisioning.
+- **Containerization:** Docker image builds and container execution.
+- **Container platform:** Amazon ECR, Amazon EKS, and Kubernetes resources.
+- **CI/CD:** GitHub Actions workflow and supporting evidence.
+- **Project documentation:** Screenshots, infrastructure captures, and demo videos.
 
 ## Architecture
 
 ```text
-Customer / Administrator
-          |
-          v
-     CloudCart UI
-    React + Vite
-          |
-       NGINX
-          |
-       /api proxy
-          |
-          v
-   Node.js / Express
-          |
-          v
-        MySQL
+                      Customer / Administrator
+                                |
+                                v
+                       CloudCart Frontend
+                         React + Vite
+                                |
+                          /api proxy
+                                |
+                                v
+                       Node.js / Express
+                                |
+                  +-------------+-------------+
+                  |             |             |
+                  v             v             v
+               Products       Orders      Email Workflow
+                                |
+                                v
+                         Admin Orders Portal
 
-Deployment and Infrastructure:
-GitHub -> Docker -> Amazon ECR -> Amazon EKS
-                              ^
-                              |
-                         Terraform
-                              |
-                             AWS
+
+                    Cloud Infrastructure and Delivery
+                                |
+             +------------------+------------------+
+             |                  |                  |
+             v                  v                  v
+          Terraform        GitHub Actions        AWS
+             |                  |                  |
+             v                  v                  v
+         AWS Resources      Docker Build      VPC / S3 / ECR
+                                                   |
+                                                   v
+                                              Amazon EKS
+                                             Kubernetes
 ```
 
-The diagram is a logical overview. Confirm the current deployed resources and CI/CD workflow before treating every connection as a live integration.
+*This is a logical architecture overview. The actual running services and integrations depend on the current deployment and configuration.*
 
 ## Technology Stack
 
 | Area | Technologies |
 |---|---|
-| Frontend | React, Vite, TypeScript |
+| Frontend | React, TypeScript, Vite |
 | Backend | Node.js, Express |
 | Database | MySQL |
 | Containers | Docker |
-| Orchestration | Kubernetes, Amazon EKS |
-| Container Registry | Amazon ECR |
+| Cloud | Amazon Web Services (AWS) |
+| Networking | VPC, subnets, route tables, NAT Gateways, Security Groups, Network ACLs |
 | Infrastructure as Code | Terraform |
-| Cloud | AWS |
-| Web Server / Proxy | NGINX |
-| Source Control | Git, GitHub |
+| Container registry | Amazon ECR |
+| Orchestration | Kubernetes, Amazon EKS |
+| Automation | GitHub Actions |
+| Web server / proxy | NGINX |
+| Version control | Git, GitHub |
 | Operations | PowerShell, AWS CLI, kubectl |
+
+## AWS Networking and Infrastructure
+
+The project includes infrastructure work covering the following AWS components:
+
+| Component | Purpose |
+|---|---|
+| Amazon VPC | Isolated cloud network |
+| Public and private subnets | Network segmentation |
+| Internet Gateway | Internet connectivity for appropriate public resources |
+| NAT Gateways | Outbound connectivity for private resources |
+| Route tables | Traffic routing between network destinations |
+| Elastic IPs | Static public IPv4 addresses |
+| Security Groups | Stateful traffic controls |
+| Network ACLs | Subnet-level traffic controls |
+| Amazon S3 | Object storage |
+| Amazon ECR | Container image registry |
+| Amazon EKS | Managed Kubernetes service |
+| Terraform | Infrastructure provisioning and lifecycle management |
+
+## Application Features
+
+### Customer Store
+
+- Browse products.
+- Add products to the shopping cart.
+- Submit checkout and delivery information.
+- Create orders and receive an order identifier.
+- Use the order confirmation workflow.
+
+### Admin Orders Portal
+
+The project includes an administrative order workflow for reviewing submitted orders and their associated details:
+
+- Order ID and timestamp
+- Customer name, email, and phone number
+- Delivery address
+- Ordered products, quantities, and total
+- Payment method and order status
+
+Admin access, order persistence, and checkout behavior were reported as tested. Production use still requires secure authorization, correct configuration, and validation in the target environment.
+
+### Email Confirmation
+
+The project includes an order confirmation email workflow. Successful email delivery was reported during testing. SMTP credentials, tokens, and other secrets must remain in environment configuration and must never be committed to Git.
+
+## Screenshots and Project Evidence
+
+### Application Showcase
+
+<p align="center">
+  <img src="app/frontend/public/showcase/cloudcart-store-1.png" alt="CloudCart Store" width="100%">
+</p>
+
+<p align="center">
+  <img src="app/frontend/public/showcase/cloudcart-store-2.png" alt="CloudCart Store Showcase 2" width="100%">
+</p>
+
+<p align="center">
+  <img src="app/frontend/public/showcase/cloudcart-store-3.png" alt="CloudCart Store Showcase 3" width="100%">
+</p>
+
+### AWS VPC Networking
+
+**VPC network connections**
+
+![CloudCart AWS VPC Network Connections](app/frontend/public/showcase/images/CloudCart-AWS-VPC-Network-Connections.png)
+
+**VPC resource map**
+
+![CloudCart AWS VPC Resource Map](app/frontend/public/showcase/images/CloudCart-AWS-VPC-Resource-Map.png)
+
+### Infrastructure Evidence
+
+| Evidence | Screenshot |
+|---|---|
+| Amazon EKS cluster | [View screenshot](app/frontend/public/showcase/images/eks-cluster.png) |
+| NAT Gateways | [View screenshot](app/frontend/public/showcase/images/nat-gateways.png) |
+| Route tables | [View screenshot](app/frontend/public/showcase/images/route-tables.png) |
+| Security Groups | [View screenshot](app/frontend/public/showcase/images/security-groups.png) |
+| Network ACLs | [View screenshot](app/frontend/public/showcase/images/network-acls.png) |
+| Elastic IP addresses | [View screenshot](app/frontend/public/showcase/images/elastic-ips.png) |
+| Elastic IP details | [View screenshot](app/frontend/public/showcase/images/elastic-ip-details.png) |
+| S3 bucket | [View screenshot](app/frontend/public/showcase/images/s3-bucket.png) |
+| Terraform plan | [View screenshot](app/frontend/public/showcase/images/terraform-plan.png) |
+| Terraform terminal | [View screenshot](app/frontend/public/showcase/images/terraform-terminal.png) |
+| GitHub Actions workflow | [View screenshot](app/frontend/public/showcase/images/github-actions-workflow.png) |
+
+### Demo Videos
+
+The videos are stored in `app/frontend/public/showcase/videos/` and tracked using Git LFS.
+
+- [CloudCart DevSecOps Platform Demo](app/frontend/public/showcase/videos/CloudCart-DevSecOps-Platform-Demo.mp4.mp4)
+- [AWS VPC Demo](app/frontend/public/showcase/videos/cloud%20cart%20vpc.mp4)
+- [EC2 Demo](app/frontend/public/showcase/videos/EC2%20video.mp4)
+- [Load Balancers Demo](app/frontend/public/showcase/videos/cloud%20cart%20load%20balancers%20.mp4)
+- [Security Groups Demo](app/frontend/public/showcase/videos/cloud%20cart%20security%20groups%20.mp4)
 
 ## Repository Structure
 
 ```text
-.
+cloudcart-devsecops-platform/
+├── .github/                  # GitHub workflow configuration
 ├── app/
-│   ├── frontend/
-│   └── backend/
-├── database/
-├── docs/
-├── infra/
-├── k8s/
-├── scripts/
-├── security/
-├── assets/
-├── deploy.ps1
-├── setup-cloudcart-deploy.ps1
+│   ├── frontend/              # React + Vite application
+│   │   └── public/showcase/   # Screenshots and demo videos
+│   └── backend/               # Node.js API
+├── database/                  # Database-related files
+├── docs/                      # Documentation
+├── infra/                     # Terraform infrastructure
+├── k8s/                       # Kubernetes resources
+├── helm/                      # Helm deployment resources
+├── scripts/                   # Automation and utility scripts
 └── README.md
 ```
 
-Some directories or files may differ by branch or local setup.
-
-## Application Pages
-
-- Overview and architecture
-- Security and CI/CD information pages
-- Observability and evidence pages
-- Store and shopping cart
-- Checkout and order tracking
-- Admin order management
+*Directory descriptions are based on the intended project organization; check the actual repository if your local structure differs.*
 
 ## Getting Started
 
 ### Prerequisites
 
-Install and configure the tools required for your chosen workflow:
+Install the tools needed for your chosen workflow:
 
 - Git
 - Node.js and npm
 - Docker Desktop
-- AWS CLI with an appropriately authorized AWS identity
+- AWS CLI with an authorized AWS identity
 - Terraform
 - kubectl
 
-An AWS account and a correctly configured cluster are required for AWS deployment.
+AWS deployment requires a correctly configured AWS account and the relevant infrastructure. Docker and local application configuration may also be required.
 
 ### Clone the Repository
 
@@ -133,7 +230,7 @@ git clone https://github.com/rudrapuhan96-spec/cloudcart-devsecops-platform.git
 cd cloudcart-devsecops-platform
 ```
 
-### Run the Frontend Locally
+### Run the Frontend
 
 ```powershell
 cd app/frontend
@@ -141,9 +238,18 @@ npm install
 npm run dev
 ```
 
-Follow the Vite output for the local URL. Backend and database configuration may be required for checkout and order functionality.
+Open the local URL printed by Vite. Product, checkout, and order functionality also requires a running backend and correctly configured database.
 
-### Validate Terraform Configuration
+### Run the Backend
+
+```powershell
+cd app/backend
+npm install
+```
+
+Configure the required environment variables, then use the start script defined in the backend's `package.json`.
+
+### Validate Terraform
 
 ```powershell
 cd infra
@@ -156,45 +262,63 @@ Review the plan before applying any infrastructure changes. AWS resources can in
 
 ### Inspect Kubernetes Resources
 
-From the project root, with a configured Kubernetes context:
+With the correct cluster context configured:
 
 ```powershell
 kubectl get pods,services,deployments -n cloudcart
 ```
 
-Use only the Kubernetes context and namespace that match your environment.
+Use the namespace and cluster appropriate to your deployment.
 
 ## Security Practices
 
-- Never commit AWS access keys, passwords, tokens or admin API keys.
-- Keep `.env` files and Terraform state out of source control.
-- Do not commit Terraform plan files or local backup files.
-- Use least-privilege IAM permissions.
-- Restrict public access to administrative interfaces.
-- Review container images and dependencies for vulnerabilities.
+- Never commit AWS access keys, passwords, SMTP credentials, tokens, or admin secrets.
+- Keep `.env` files and sensitive Terraform state out of source control.
+- Apply least-privilege IAM permissions.
+- Restrict inbound network access to required ports and trusted sources.
+- Enforce server-side authorization for administrative operations.
+- Review container images and application dependencies for vulnerabilities.
+- Review Terraform plans before applying infrastructure changes.
 - Avoid exposing customer data or credentials in screenshots and recordings.
 
 ## Troubleshooting
 
-**Frontend API errors:** Check the NGINX `/api/` proxy and backend service connectivity.
+**Frontend API errors:** Check the `/api` proxy, backend availability, and API response format.
 
-**Checkout errors:** Verify database schema migrations and backend database configuration.
+**Checkout errors:** Verify the database configuration, schema, and backend logs.
 
-**Kubernetes unavailable:** Check the AWS identity, kubeconfig context, cluster status and namespace.
+**Kubernetes unavailable:** Check the AWS identity, kubeconfig context, cluster status, and namespace.
 
 **Docker connection errors:** Ensure Docker Desktop is running and its Linux engine is available.
 
-**Unexpected AWS charges:** Review active resources in the AWS Billing and Cost Management console.
+**Unexpected AWS charges:** Review active resources in AWS Billing and Cost Management.
+
+## Validation Checklist
+
+The following checks were reported as completed during project testing:
+
+- [x] Frontend loads and product APIs return JSON.
+- [x] Checkout successfully creates an order.
+- [x] Order details persist after a backend restart.
+- [x] Admin authentication and authorization work as intended.
+- [x] Customer confirmation emails are delivered.
+- [x] Docker images build and containers start.
+- [x] Terraform configuration validates and the plan matches the intended architecture.
+- [x] Kubernetes workloads and networking are healthy.
+- [x] GitHub Actions workflows complete successfully.
+- [x] Screenshot and demo media paths are included in the README.
+
+*These checks reflect the reported test results. They do not guarantee that cloud resources are still deployed or that every service is currently available.*
 
 ## Project Status
 
-This repository is intended as a practical DevSecOps portfolio project. Deployment status and individual capabilities should be verified against the current AWS environment before claiming production operation.
+CloudCart is a hands-on portfolio project demonstrating full-stack development and cloud-native DevSecOps practices. The repository documents application workflows, AWS networking, infrastructure automation, containerization, Kubernetes, and deployment evidence.
 
 ## Author
 
 **Rudra Shankar Puhan**
 
-Cloud, DevOps, infrastructure automation and secure application deployment.
+Cloud infrastructure · DevOps · Terraform · AWS networking · Secure application deployment
 
 ---
 
@@ -202,3 +326,6 @@ Cloud, DevOps, infrastructure automation and secure application deployment.
   Built as a hands-on cloud and DevSecOps learning project.
 </p>
 
+<p align="center">
+  <a href="https://github.com/rudrapuhan96-spec/cloudcart-devsecops-platform">Explore the CloudCart Repository</a>
+</p>
